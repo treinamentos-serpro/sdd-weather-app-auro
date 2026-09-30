@@ -48,14 +48,14 @@ Backlog derivado de [plans/error-handling-plan.md](../plans/error-handling-plan.
 - **Arquivos prováveis:** `tests/unit/states.test.tsx`, `tests/unit/App.test.tsx`.
 - **Requisitos relacionados:** AC-ERR-04, AC-ERR-05, AC-ERR-07.
 
-- [ ] **T-ERR-06 — E2E offline**
+- [x] **T-ERR-06 — E2E offline**
 - **Tipo:** Test
 - **Descrição:** Busca e previsão com `route.abort('internetdisconnected')`, reconexão e retry por teclado.
 - **Critérios de aceite:** Os cenários passam nos três viewports; o retry refaz apenas o endpoint que falhou.
 - **Dependências:** T-ERR-03.
 - **Arquivos prováveis:** `tests/e2e/weather.spec.ts`.
 - **Requisitos relacionados:** AC-ERR-05, AC-ERR-06.
-- **Status:** código escrito; execução pendente porque faltam dependências de sistema do Playwright no container.
+- **Status:** concluída; 20 cenários E2E passam (chromium e mobile).
 
 ## Rastreabilidade
 
@@ -72,4 +72,4 @@ Backlog derivado de [plans/error-handling-plan.md](../plans/error-handling-plan.
 - [x] `pnpm lint`
 - [x] `pnpm build`
 - [x] `pnpm test`
-- [ ] `pnpm test:e2e`
+- [x] `pnpm test:e2e`

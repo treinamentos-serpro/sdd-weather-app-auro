@@ -18,14 +18,14 @@ Backlog derivado de [plans/city-combobox-plan.md](../plans/city-combobox-plan.md
 - **Arquivos prováveis:** `tests/unit/CityResults.test.tsx`, `tests/unit/App.test.tsx`.
 - **Requisitos relacionados:** AC-CB-01 a AC-CB-05.
 
-- [ ] **T-CB-03 — Atualizar E2E para o combobox**
+- [x] **T-CB-03 — Atualizar E2E para o combobox**
 - **Tipo:** Test
 - **Descrição:** Trocar a seleção por botão por `selectOption` nos cenários Playwright.
 - **Critérios de aceite:** Todos os cenários passam em `375x667`, `768x1024` e `1440x900` sem rolagem horizontal; `pnpm test:e2e` passa.
 - **Dependências:** T-CB-01.
 - **Arquivos prováveis:** `tests/e2e/weather.spec.ts`.
 - **Requisitos relacionados:** AC-CB-03, AC-CB-05, NFR-CB-01.
-- **Status:** código atualizado; execução pendente porque faltam dependências de sistema do Playwright no container.
+- **Status:** concluída; 20 cenários E2E passam (chromium e mobile).
 
 ## Rastreabilidade
 
@@ -42,4 +42,4 @@ Backlog derivado de [plans/city-combobox-plan.md](../plans/city-combobox-plan.md
 - [x] `pnpm lint`
 - [x] `pnpm build`
 - [x] `pnpm test`
-- [ ] `pnpm test:e2e`
+- [x] `pnpm test:e2e`

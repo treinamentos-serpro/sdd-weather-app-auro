@@ -129,7 +129,7 @@ test('busca cidade, exibe previsão e alterna unidade nos viewports suportados',
     const fahrenheitButton = page.getByRole('button', { name: 'Fahrenheit' });
     await fahrenheitButton.focus();
     await fahrenheitButton.press('Enter');
-    await expect(page.getByText('72°F')).toBeVisible();
+    await expect(page.getByText('72°F', { exact: true })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   }
 });
@@ -163,7 +163,7 @@ test('combobox por teclado só consulta o clima após confirmação', async ({ p
     await page.keyboard.press('Tab');
     await expect(confirm).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(page.getByText('22°C')).toBeVisible();
+    await expect(page.getByText('22°C', { exact: true })).toBeVisible();
     expect(forecastRequests).toBe(1);
     await expectNoHorizontalOverflow(page);
   }
@@ -182,18 +182,18 @@ test('input inválido e cidade inexistente não mantêm clima anterior', async (
     await page.setViewportSize(viewport);
     await page.goto('/');
     await searchAndSelectCity(page);
-    await expect(page.getByText('22°C')).toBeVisible();
+    await expect(page.getByText('22°C', { exact: true })).toBeVisible();
 
     const searchInput = getSearchInput(page);
     await searchInput.fill('!!!');
     await searchInput.press('Enter');
     await expect(page.getByText('Informe o nome de uma cidade.')).toBeVisible();
-    await expect(page.getByText('22°C')).toHaveCount(0);
+    await expect(page.getByText('22°C', { exact: true })).toHaveCount(0);
 
     await searchInput.fill('Atlantis');
     await searchInput.press('Enter');
     await expect(page.getByText('Nenhuma cidade foi encontrada.')).toBeVisible();
-    await expect(page.getByText('22°C')).toHaveCount(0);
+    await expect(page.getByText('22°C', { exact: true })).toHaveCount(0);
     await expectNoHorizontalOverflow(page);
   }
 });
@@ -304,7 +304,7 @@ test('429 oferece retry do forecast nos viewports suportados', async ({ page }) 
     const retryButton = page.getByRole('button', { name: 'Tentar novamente' });
     await retryButton.focus();
     await retryButton.press('Enter');
-    await expect(page.getByText('22°C')).toBeVisible();
+    await expect(page.getByText('22°C', { exact: true })).toBeVisible();
     expect(forecastAttempts).toBe(2);
     await expectNoHorizontalOverflow(page);
   }
@@ -333,7 +333,7 @@ test('falha de rede oferece retry nos viewports suportados', async ({ page }) =>
 
     await expect(page.getByText('Não foi possível conectar ao serviço de clima.')).toBeVisible();
     await page.getByRole('button', { name: 'Tentar novamente' }).click();
-    await expect(page.getByText('22°C')).toBeVisible();
+    await expect(page.getByText('22°C', { exact: true })).toBeVisible();
     expect(forecastAttempts).toBe(2);
     await expectNoHorizontalOverflow(page);
   }
