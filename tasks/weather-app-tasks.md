@@ -4,7 +4,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 1 — Tipos e contratos
 
-### T-01 — Definir contratos de domínio
+- [x] **T-01 — Definir contratos de domínio**
 - **Tipo:** Data
 - **Descrição:** Criar `Unit`, `City`, `CurrentWeather`, `ForecastDay`, `WeatherData`, `WeatherStatus` e `WeatherError`.
 - **Critérios de aceite:** Os tipos refletem o plano; `Unit` aceita apenas `celsius`/`fahrenheit`; `WeatherError.kind` contempla input inválido, não encontrado, timeout, rate limit, rede e resposta inválida; o TypeScript strict compila.
@@ -14,7 +14,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 2 — Funções puras
 
-### T-02 — Implementar conversão Celsius/Fahrenheit
+- [x] **T-02 — Implementar conversão Celsius/Fahrenheit**
 - **Tipo:** Data
 - **Descrição:** Criar conversão pura mantendo Celsius como unidade de origem.
 - **Critérios de aceite:** Usa `F = C * 9 / 5 + 32`; trata zero, negativos e decimais; não altera o valor de origem.
@@ -22,7 +22,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/lib/temperature.ts`.
 - **Requisitos relacionados:** FR-05, NFR-07.
 
-### T-03 — Implementar formatação de temperatura
+- [x] **T-03 — Implementar formatação de temperatura**
 - **Tipo:** Data
 - **Descrição:** Criar função para arredondar o valor exibido e acrescentar a unidade.
 - **Critérios de aceite:** Arredonda ao inteiro mais próximo; exibe `°C`/`°F`; não faz request.
@@ -30,7 +30,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/lib/temperature.ts`.
 - **Requisitos relacionados:** FR-05, AC-05.
 
-### T-04 — Implementar formatação de datas
+- [x] **T-04 — Implementar formatação de datas**
 - **Tipo:** Data
 - **Descrição:** Formatar datas e horários no timezone da cidade.
 - **Critérios de aceite:** Usa `dd/MM` e `HH:mm`; com timezone `America/Sao_Paulo`, o resultado não depende do timezone do navegador.
@@ -38,7 +38,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/lib/format.ts`.
 - **Requisitos relacionados:** FR-03, FR-04, FR-10, NFR-09.
 
-### T-05 — Implementar tradução de códigos WMO
+- [x] **T-05 — Implementar tradução de códigos WMO**
 - **Tipo:** Data
 - **Descrição:** Mapear códigos WMO para labels em pt-BR.
 - **Critérios de aceite:** Códigos conhecidos têm labels; código desconhecido tem fallback; a função não faz I/O.
@@ -48,7 +48,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 3 — Services e acesso a dados
 
-### T-06 — Implementar service de geocoding
+- [x] **T-06 — Implementar service de geocoding**
 - **Tipo:** Data
 - **Descrição:** Encapsular geocoding e mapear resultados para `City`.
 - **Critérios de aceite:** URL contém `name`, `count=10`, `language=pt` e `format=json`; input vazio/símbolos não chama API; caracteres válidos são preservados; resultados mapeiam localização/timezone; lista vazia retorna `[]`.
@@ -56,7 +56,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/services/weatherService.ts`.
 - **Requisitos relacionados:** FR-01, FR-02, FR-07, AC-01, AC-01b, AC-02b.
 
-### T-07 — Implementar service de forecast
+- [x] **T-07 — Implementar service de forecast**
 - **Tipo:** Data
 - **Descrição:** Encapsular forecast e normalizar a resposta para `WeatherData`.
 - **Critérios de aceite:** URL contém Celsius, `timezone=auto`, `forecast_days=5`, `current` e `daily`; arrays são combinados por índice; cinco dias e campos essenciais são validados; condição diária pode faltar.
@@ -64,7 +64,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/services/weatherService.ts`.
 - **Requisitos relacionados:** FR-03, FR-04, FR-08, FR-10, AC-03, AC-04, AC-08, AC-10, AC-13, AC-14.
 
-### T-08 — Implementar erros, timeout e retryability
+- [x] **T-08 — Implementar erros, timeout e retryability**
 - **Tipo:** Data
 - **Descrição:** Classificar HTTP, rede, timeout, rate limit e resposta inválida.
 - **Critérios de aceite:** Mais de 10 s produz `timeout`; `429` produz `rate-limit`; falha de conexão produz `network`; JSON/campos inválidos produzem `invalid-response`; cada erro informa se é retryable.
@@ -74,7 +74,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 4 — Hook de estado
 
-### T-09 — Implementar useWeather
+- [x] **T-09 — Implementar useWeather**
 - **Tipo:** Data
 - **Descrição:** Orquestrar geocoding, forecast, estados independentes, retry e precedência entre requests.
 - **Critérios de aceite:** Mantém `searchStatus`/`weatherStatus`; expõe query, resultados, cidade, dados e erros; publica idle/loading/success/empty/error; retry repete a operação falha; request antigo não sobrescreve o recente.
@@ -84,7 +84,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 5 — Componentes de apresentação
 
-### T-10 — Criar shell da aplicação
+- [x] **T-10 — Criar shell da aplicação**
 - **Tipo:** UI
 - **Descrição:** Criar estrutura visual base sem acesso à API.
 - **Critérios de aceite:** Renderiza regiões para busca, resultados, clima, previsão e unidade; não chama `fetch`; recebe dados/handlers por props.
@@ -92,7 +92,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/App.tsx`.
 - **Requisitos relacionados:** NFR-05, NFR-06.
 
-### T-11 — Configurar estilos globais e responsividade
+- [ ] **T-11 — Configurar estilos globais e responsividade**
 - **Tipo:** UI
 - **Descrição:** Aplicar Tailwind e estilos responsivos.
 - **Critérios de aceite:** Nos viewports `375x667`, `768x1024` e `1440x900`, `scrollWidth` não excede `innerWidth`; conteúdo essencial permanece visível.
@@ -100,7 +100,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/styles/index.css`, `tailwind.config.js`.
 - **Requisitos relacionados:** NFR-01, NFR-06.
 
-### T-12 — Criar SearchBar
+- [x] **T-12 — Criar SearchBar**
 - **Tipo:** UI
 - **Descrição:** Implementar campo, submit e validação local.
 - **Critérios de aceite:** Possui label acessível; aceita teclado; bloqueia vazio/símbolos; preserva caracteres válidos; não chama service diretamente.
@@ -108,7 +108,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/SearchBar.tsx`.
 - **Requisitos relacionados:** FR-01, FR-07, AC-01, AC-01b, AC-07, AC-11, NFR-03.
 
-### T-13 — Criar CityResults
+- [x] **T-13 — Criar CityResults**
 - **Tipo:** UI
 - **Descrição:** Renderizar resultados e seleção por callback.
 - **Critérios de aceite:** Mostra localização disponível; diferencia homônimos; `Enter` seleciona o resultado focado; não acessa API.
@@ -116,7 +116,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/CityResults.tsx`.
 - **Requisitos relacionados:** FR-02, AC-02, AC-02b, NFR-03.
 
-### T-14 — Criar CurrentWeather
+- [x] **T-14 — Criar CurrentWeather**
 - **Tipo:** UI
 - **Descrição:** Renderizar clima atual recebido por props.
 - **Critérios de aceite:** Mostra cidade, temperatura, unidade, condição e horário; localização opcional aparece quando presente; dados obrigatórios ausentes mostram estado insuficiente.
@@ -124,7 +124,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/CurrentWeather.tsx`.
 - **Requisitos relacionados:** FR-03, FR-08, AC-03, AC-03b, AC-13.
 
-### T-15 — Criar ForecastList
+- [x] **T-15 — Criar ForecastList**
 - **Tipo:** UI
 - **Descrição:** Compor a lista de previsão diária.
 - **Critérios de aceite:** Com cinco `ForecastDay`, renderiza exatamente cinco cards na ordem recebida; passa item e timezone ao card; não acessa API.
@@ -132,7 +132,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/ForecastList.tsx`.
 - **Requisitos relacionados:** FR-04, FR-10, AC-04, AC-10.
 
-### T-16 — Criar ForecastCard
+- [x] **T-16 — Criar ForecastCard**
 - **Tipo:** UI
 - **Descrição:** Renderizar um dia da previsão.
 - **Critérios de aceite:** Mostra data, mínima e máxima; usa timezone recebido; condição ausente gera texto de indisponibilidade, nunca `null`/`undefined`.
@@ -140,7 +140,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/ForecastCard.tsx`.
 - **Requisitos relacionados:** FR-04, FR-08, AC-08, AC-14.
 
-### T-17 — Criar UnitToggle
+- [x] **T-17 — Criar UnitToggle**
 - **Tipo:** UI
 - **Descrição:** Implementar controle Celsius/Fahrenheit por callback.
 - **Critérios de aceite:** Inicia em Celsius; possui nome acessível; altera apresentação; não chama forecast; funciona por teclado.
@@ -148,7 +148,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/UnitToggle.tsx`.
 - **Requisitos relacionados:** FR-05, AC-05, NFR-03, NFR-07.
 
-### T-18 — Criar LoadingState
+- [x] **T-18 — Criar LoadingState**
 - **Tipo:** UI
 - **Descrição:** Renderizar carregamento.
 - **Critérios de aceite:** Usa role `status` ou equivalente; texto em pt-BR; não renderiza conteúdo de sucesso.
@@ -156,7 +156,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/states/LoadingState.tsx`.
 - **Requisitos relacionados:** FR-06, AC-06, NFR-03, NFR-09.
 
-### T-19 — Criar EmptyState
+- [x] **T-19 — Criar EmptyState**
 - **Tipo:** UI
 - **Descrição:** Renderizar input inválido, ausência de resultados e dados insuficientes.
 - **Critérios de aceite:** Mensagens distintas para `invalid-input`, `not-found` e dados insuficientes; nova tentativa permanece disponível; textos em pt-BR.
@@ -164,7 +164,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `src/components/states/EmptyState.tsx`.
 - **Requisitos relacionados:** FR-07, FR-08, AC-07, AC-08, NFR-09.
 
-### T-20 — Criar ErrorState
+- [x] **T-20 — Criar ErrorState**
 - **Tipo:** UI
 - **Descrição:** Renderizar erro e retry.
 - **Critérios de aceite:** Mensagem usa `WeatherError.kind`; botão aparece somente com `retryable=true`; tem nome, foco e teclado acessíveis; textos em pt-BR.
@@ -174,7 +174,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 6 — Integração
 
-### T-21 — Integrar App e fluxo completo
+- [x] **T-21 — Integrar App e fluxo completo**
 - **Tipo:** UI
 - **Descrição:** Conectar hook, componentes, unidade derivada e handlers.
 - **Critérios de aceite:** Busca, seleção, forecast e renderização funcionam; toggle não chama forecast; cada status renderiza o estado correspondente; teclado funciona.
@@ -184,7 +184,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 7 — Testes
 
-### T-22 — Testar conversão de unidade
+- [x] **T-22 — Testar conversão de unidade**
 - **Tipo:** Test
 - **Descrição:** Testar exclusivamente conversão, arredondamento e apresentação Celsius/Fahrenheit.
 - **Critérios de aceite:** Verifica zero, negativos, decimais, fórmula Fahrenheit, arredondamento, símbolos de unidade e ausência de request.
@@ -192,7 +192,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/temperature.test.ts`.
 - **Requisitos relacionados:** FR-05, AC-05, NFR-07.
 
-### T-23 — Testar formatação e códigos meteorológicos
+- [x] **T-23 — Testar formatação e códigos meteorológicos**
 - **Tipo:** Test
 - **Descrição:** Testar datas, timezone e tradução WMO.
 - **Critérios de aceite:** Verifica `dd/MM`, `HH:mm`, timezone diferente do ambiente, códigos conhecidos e fallback desconhecido.
@@ -200,7 +200,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/format.test.ts`, `tests/unit/weatherCodes.test.ts`.
 - **Requisitos relacionados:** FR-03, FR-04, FR-10, NFR-09.
 
-### T-24 — Testar service de geocoding com mock de fetch
+- [x] **T-24 — Testar service de geocoding com mock de fetch**
 - **Tipo:** Test
 - **Descrição:** Testar exclusivamente o service de geocoding na fronteira HTTP.
 - **Critérios de aceite:** Verifica URL/parâmetros, mapeamento para `City`, input inválido, sem resultados e homônimos; valida contrato normalizado e não chama forecast.
@@ -208,7 +208,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/weatherService.test.ts`.
 - **Requisitos relacionados:** FR-01, FR-02, FR-07, AC-01, AC-01b, AC-02b.
 
-### T-25 — Testar service de forecast com mock de fetch
+- [x] **T-25 — Testar service de forecast com mock de fetch**
 - **Tipo:** Test
 - **Descrição:** Testar exclusivamente o service de forecast na fronteira HTTP.
 - **Critérios de aceite:** Verifica parâmetros, `WeatherData`, cinco dias, resposta parcial, campos ausentes, `429`, JSON inválido, rede e timeout.
@@ -216,7 +216,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/weatherService.test.ts`.
 - **Requisitos relacionados:** FR-03, FR-04, FR-08, FR-09, FR-10, AC-03, AC-04, AC-08, AC-09, AC-12, AC-13, AC-14.
 
-### T-26 — Testar componentes de busca
+- [x] **T-26 — Testar componentes de busca**
 - **Tipo:** Test
 - **Descrição:** Testar `SearchBar` e `CityResults` com Testing Library.
 - **Critérios de aceite:** Cobre input inválido, submit, resultados, homônimos, seleção, teclado e labels; não usa rede.
@@ -224,7 +224,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/SearchBar.test.tsx`, `tests/unit/CityResults.test.tsx`.
 - **Requisitos relacionados:** FR-01, FR-02, FR-07, AC-01, AC-02, AC-07, AC-11, NFR-03.
 
-### T-27 — Testar componentes meteorológicos
+- [x] **T-27 — Testar componentes meteorológicos**
 - **Tipo:** Test
 - **Descrição:** Testar `CurrentWeather`, `ForecastList` e `ForecastCard`.
 - **Critérios de aceite:** Cobre campos obrigatórios, cinco dias, timezone, mínimas/máximas, condição ausente e valores inválidos.
@@ -232,7 +232,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/CurrentWeather.test.tsx`, `tests/unit/ForecastList.test.tsx`, `tests/unit/ForecastCard.test.tsx`.
 - **Requisitos relacionados:** FR-03, FR-04, FR-08, FR-10, AC-03, AC-04, AC-08, AC-10, AC-13, AC-14.
 
-### T-28 — Testar UnitToggle
+- [x] **T-28 — Testar UnitToggle**
 - **Tipo:** Test
 - **Descrição:** Testar exclusivamente o controle de unidade.
 - **Critérios de aceite:** Inicia Celsius; troca para Fahrenheit; não dispara forecast; teclado e labels funcionam.
@@ -240,7 +240,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/UnitToggle.test.tsx`.
 - **Requisitos relacionados:** FR-05, AC-05, NFR-03, NFR-07.
 
-### T-29 — Testar estados loading/erro/vazio
+- [x] **T-29 — Testar estados loading/erro/vazio**
 - **Tipo:** Test
 - **Descrição:** Testar exclusivamente `LoadingState`, `ErrorState` e `EmptyState`.
 - **Critérios de aceite:** Loading usa status acessível; erro mostra retry somente quando permitido; vazio diferencia input inválido, não encontrado e dados insuficientes; mensagens, foco e teclado funcionam em pt-BR.
@@ -248,7 +248,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 - **Arquivos prováveis:** `tests/unit/states.test.tsx`.
 - **Requisitos relacionados:** FR-06, FR-07, FR-08, FR-09, AC-06, AC-07, AC-08, AC-09, NFR-03, NFR-09.
 
-### T-30 — Testar hook e integração local
+- [x] **T-30 — Testar hook e integração local**
 - **Tipo:** Test
 - **Descrição:** Testar transições do hook e integração dos componentes.
 - **Critérios de aceite:** Verifica todos os status; retry chama apenas a operação falha; request antigo não altera o resultado recente; seleção produz forecast; unidade não chama forecast.
@@ -258,7 +258,7 @@ Backlog derivado de [plans/weather-app-plan.md](../plans/weather-app-plan.md). A
 
 ## Entrega 8 — Hardening
 
-### T-31 — Validar E2E, performance, acessibilidade e qualidade final
+- [ ] **T-31 — Validar E2E, performance, acessibilidade e qualidade final**
 - **Tipo:** Test
 - **Descrição:** Executar Playwright e validações finais sem ampliar o MVP.
 - **Critérios de aceite:** E2E cobre busca, seleção, clima, cinco dias, unidade, input inválido, cidade inexistente, parcial, rede, timeout, rate limit, retry e concorrência; cada cenário passa em `375x667`, `768x1024` e `1440x900`; loading até 100 ms; dados até 2 s após resposta válida; `pnpm lint`, `pnpm build`, `pnpm test` e `pnpm test:e2e` passam.
